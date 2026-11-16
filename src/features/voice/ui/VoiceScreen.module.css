@@ -1,0 +1,71 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+  margin-bottom: 18px;
+  align-items: start;
+}
+.controls { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+.transcript {
+  min-height: 88px;
+  padding: 15px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.label { display: block; margin-top: 14px; margin-bottom: 7px; color: var(--color-text); font-weight: 580; }
+.controls input {
+  flex: 1;
+  min-width: 180px;
+  min-height: var(--target-size);
+  padding: 11px 14px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  transition: border-color .16s ease, box-shadow .16s ease;
+}
+.controls input:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-primary-soft); outline: 0; }
+.commandList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+  padding: 0;
+  margin: 15px 0 0;
+  list-style: none;
+}
+.commandList li {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 14px 15px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-alt);
+  transition: border-color .16s ease, background-color .16s ease, transform .16s ease;
+}
+.commandList li:hover { border-color: var(--color-border-strong); background: var(--color-surface); transform: translateY(-1px); }
+.commandList li > span {
+  display: grid;
+  place-items: center;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-primary);
+  background: var(--color-surface);
+  font-size: 1.22rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+.commandList strong { font-weight: 570; }
+.commandList small { display: block; margin-top: 4px; color: var(--color-muted); line-height: 1.5; }
+.scanTarget { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+@media (max-width: 760px) { .grid, .commandList { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .commandList li { transition: none; } }

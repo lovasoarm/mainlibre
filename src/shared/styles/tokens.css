@@ -1,0 +1,64 @@
+@import './global.css';
+
+:root {
+  color-scheme: light;
+  --color-bg: #e9eeea;
+  --color-surface: #fbfcfa;
+  --color-surface-alt: #e2eae4;
+  --color-surface-raised: #ffffff;
+  --color-text: #25342e;
+  --color-muted: #5c6b63;
+  --color-border: #c2cec6;
+  --color-border-strong: #9eafa4;
+  --color-primary: #245f56;
+  --color-primary-hover: #194f47;
+  --color-primary-soft: #dce9e2;
+  --color-primary-contrast: #ffffff;
+  --color-focus: #1b554b;
+  --color-success: #245f56;
+  --color-danger: #245f56;
+  --target-size: 60px;
+  --target-gap: 9px;
+  --radius-card: 6px;
+  --radius-control: 4px;
+  --shadow-card: 0 2px 7px rgb(35 55 45 / 7%), 0 1px 2px rgb(35 55 45 / 4%);
+  --shadow-hover: 0 7px 16px rgb(35 55 45 / 10%), 0 2px 4px rgb(35 55 45 / 5%);
+  --font-body: 'Segoe UI Variable', Aptos, 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Aptos Display', 'Segoe UI Variable Display', 'Segoe UI Variable', 'Segoe UI', sans-serif;
+  font-family: var(--font-body);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Le contraste renforcé reste dans le thème clair et conserve les mêmes repères. */
+:root[data-contrast='high'] {
+  color-scheme: light;
+  --color-bg: #e8ede9;
+  --color-surface: #ffffff;
+  --color-surface-alt: #e0e8e2;
+  --color-surface-raised: #ffffff;
+  --color-text: #18251f;
+  --color-muted: #34453c;
+  --color-border: #87978d;
+  --color-border-strong: #596b60;
+  --color-primary: #174f46;
+  --color-primary-hover: #103f38;
+  --color-primary-soft: #d5e3da;
+  --color-primary-contrast: #ffffff;
+  --color-focus: #123e37;
+  --color-success: #174f46;
+  --color-danger: #174f46;
+  --shadow-card: 0 1px 3px rgb(20 40 30 / 8%);
+  --shadow-hover: 0 5px 12px rgb(20 40 30 / 10%);
+}
+
+:root[data-motion='reduced'] *,
+:root[data-motion='reduced'] *::before,
+:root[data-motion='reduced'] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+  transition-duration: 0.01ms !important;
+}

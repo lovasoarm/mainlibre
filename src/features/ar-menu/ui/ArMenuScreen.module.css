@@ -1,0 +1,122 @@
+.controls { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 13px; }
+.stage {
+  position: relative;
+  min-height: clamp(430px, 54vw, 540px);
+  margin: 19px 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-card);
+  background: #e3eae5;
+  box-shadow: var(--shadow-card);
+  perspective: 900px;
+}
+.video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); opacity: .9; }
+.videoFallback {
+  position: absolute;
+  z-index: 1;
+  top: 13px;
+  left: 13px;
+  right: 13px;
+  display: block;
+  width: auto;
+  padding: 10px 13px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: rgb(251 252 250 / 94%);
+  color: var(--color-muted);
+  font-size: .9rem;
+  line-height: 1.45;
+  text-align: left;
+  pointer-events: none;
+}
+.cursor {
+  position: fixed;
+  z-index: 100;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border: 3px solid var(--color-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px #fff;
+  pointer-events: none;
+  visibility: hidden;
+}
+.menu {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 54%;
+  width: min(740px, 90%);
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+  transform-style: preserve-3d;
+}
+.menuButton {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  min-height: 112px;
+  padding: 16px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: rgb(251 252 250 / 97%);
+  color: var(--color-text);
+  box-shadow: 0 2px 7px rgb(25 40 32 / 11%);
+  font-size: 1rem;
+  font-weight: 590;
+  text-align: center;
+  transition: transform .16s ease, border-color .16s ease, background-color .16s ease, box-shadow .16s ease;
+}
+.menuButton:hover:not(:disabled):not([data-active='true']),
+.menuButton:focus-visible:not([data-active='true']) {
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
+  background: var(--color-primary-soft);
+  color: var(--color-text);
+  box-shadow: 0 5px 12px rgb(25 40 32 / 13%);
+}
+.menuButton:hover:not(:disabled):not([data-active='true']) strong,
+.menuButton:hover:not(:disabled):not([data-active='true']) small,
+.menuButton:focus-visible:not([data-active='true']) strong,
+.menuButton:focus-visible:not([data-active='true']) small { color: var(--color-text); }
+.menuButton span { color: var(--color-primary); font-size: 1.42rem; line-height: 1; transition: transform .16s ease, color .16s ease; }
+.menuButton:hover:not(:disabled):not([data-active='true']) span { color: var(--color-primary-hover); transform: translateY(-1px); }
+.menuButton[data-active='true'] {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  box-shadow: 0 4px 12px rgb(27 69 60 / 22%);
+}
+.menuButton[data-active='true'] span,
+.menuButton[data-active='true'] strong,
+.menuButton[data-active='true'] small { color: var(--color-primary-contrast); }
+.scanActive { outline: 3px solid var(--color-focus); outline-offset: 3px; }
+.dwellActive::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: var(--color-primary-contrast);
+  transform-origin: left;
+  animation: dwellProgress var(--dwell-ms) linear forwards;
+}
+.menuButton small { color: var(--color-muted); font-size: .82rem; font-weight: 450; }
+.menuButton strong { color: inherit; font-weight: 560; }
+@keyframes dwellProgress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .menu { transform: translate(-50%, -50%) !important; }
+  .menuButton, .menuButton span { transition: none; }
+  .dwellActive::after { animation: none; transform: scaleX(1); }
+}
+@media (max-width: 600px) {
+  .stage { min-height: 580px; }
+  .menu { top: 57%; grid-template-columns: 1fr; gap: 9px; width: min(420px, 90%); }
+  .menuButton { min-height: 78px; }
+}
